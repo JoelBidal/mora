@@ -1,0 +1,19 @@
+{
+  "name": "mora",
+  "private": true,
+  "version": "0.1.0",
+  "type": "module",
+  "scripts": {
+    "dev": "vite",
+    "build": "vite build",
+    "preview": "vite preview"
+  },
+  "devDependencies": {
+    "vite": "^8.3.8"
+  },
+  "dependencies": {
+    "@figma/expressive-components": "^0.2.0",
+    "react": "^19.3.1",
+    "react-dom": "^19.3.1"
+  }
+}

@@ -1,0 +1,75 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Mora — What your face reveals about your health</title>
+    <meta
+      name="description"
+      content="Explore the subtle signs your skin reveals and the delicate balance between health, nature, and modern skincare."
+    />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="/src/styles.css" />
+  </head>
+  <body>
+    <div class="page">
+      <main class="card">
+        <!-- Hero visual: face + gradients (Figma node "Asset", wrapped by the Dither ShaderEffect) -->
+        <div class="hero-asset" id="hero-asset" aria-hidden="true">
+          <div class="hero-asset__inner">
+            <div class="grad grad--bottom"></div>
+            <img class="hero-asset__face" src="/assets/face.png" alt="" width="482" height="647" />
+            <div class="grad grad--top"></div>
+            <div class="grad grad--radial"></div>
+          </div>
+        </div>
+
+        <!-- Floating "bubbles" over the face -->
+        <div class="bubbles" aria-hidden="true">
+          <span class="bubble bubble--glow" data-glass="lg" style="--x: 359px; --y: 156px; --s: 80px"><span class="bubble__label">++++<br />pa</span></span>
+          <span class="bubble" data-glass="sm" style="--x: 428px; --y: 148px; --s: 30px"></span>
+          <span class="bubble" data-glass="sm" style="--x: 425px; --y: 222px; --s: 15px"></span>
+          <span class="bubble bubble--glow" data-glass="lg" style="--x: 527px; --y: 306px; --s: 90px"><span class="bubble__label">01<br />base</span></span>
+          <span class="bubble bubble--glow" data-glass="lg" style="--x: 606px; --y: 291px; --s: 45px"><span class="bubble__label">50<br />spf</span></span>
+          <span class="bubble bubble--glow bubble--glow-sm" data-glass="lg" style="--x: 608px; --y: 368px; --s: 30px"></span>
+          <span class="bubble bubble--glow" data-glass="lg" style="--x: 372px; --y: 430px; --s: 60px"><span class="bubble__label">uv<br />a+b</span></span>
+        </div>
+
+        <header class="nav">
+          <a class="nav__logo" href="/" aria-label="Mora home">
+            <img src="/assets/logo.svg" alt="Mora" width="94" height="20" />
+          </a>
+          <nav class="nav__links" aria-label="Primary">
+            <a href="#solutions">Solutions</a>
+            <a href="#platform">Platform</a>
+            <a href="#pricing">Pricing</a>
+            <a href="#about">About Us</a>
+          </nav>
+          <div class="nav__cta">
+            <a class="btn btn--sm" href="#get-started">Get Started</a>
+          </div>
+        </header>
+
+        <section class="hero">
+          <div class="hero__text">
+            <h1 class="hero__title">What your face reveals<br />about your health</h1>
+            <p class="hero__subtitle">
+              Explore the subtle signs your skin reveals and the delicate balance between health,
+              nature, and modern skincare.
+            </p>
+          </div>
+          <a class="btn" href="#discover">Discover Mora</a>
+        </section>
+      </main>
+
+      <div class="noise" aria-hidden="true"></div>
+    </div>
+
+    <script type="module" src="/src/main.js"></script>
+  </body>
+</html>
