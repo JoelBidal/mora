@@ -5,7 +5,7 @@
  *   lg → radius (frost) 3, refraction 1,    depth 27, dispersion 0.34, light 0.8 @ -45°
  *   sm → radius (frost) 4, refraction 0.48, depth 20, dispersion 0.42, light 0.8 @ -45°
  *
- * Implementation: one SVG filter per bubble used as `backdrop-filter: url(#…)`:
+ * Implementation: one SVG filter per bubble size, used as `backdrop-filter: url(#…)`:
  *   frost      → feGaussianBlur on the backdrop
  *   refraction → feDisplacementMap driven by a generated lens map (bends the rim, `depth` px wide)
  *   dispersion → R / G / B displaced by slightly different amounts, recombined (chromatic aberration)
@@ -128,32 +128,59 @@ function createGlassFilter(id, size, p) {
   return filter;
 }
 
-export function initGlass(bubbles) {
-  if (!bubbles.length) return;
+/* ---------- Shared filter cache (bubbles are created and destroyed at runtime) ---------- */
 
-  // Light highlight is pure CSS, so it applies in every browser.
-  for (const bubble of bubbles) {
-    const p = GLASS_PRESETS[bubble.dataset.glass] ?? GLASS_PRESETS.lg;
-    bubble.style.setProperty("--glass-light", p.lightIntensity);
-    // Figma -45° = light from the top-left; CSS gradient angle points to where it ends.
-    bubble.style.setProperty("--glass-light-angle", `${180 + p.lightAngle}deg`);
-  }
+export const svgGlassSupported = supportsSvgBackdrop();
 
-  if (!supportsSvgBackdrop()) return;
+let defs = null;
+const filterIds = new Map(); // "preset:size" → filter id
 
+function ensureDefs() {
+  if (defs) return defs;
   const svg = el("svg", { width: 0, height: 0, "aria-hidden": "true" });
   svg.style.position = "absolute";
-  const defs = el("defs");
+  defs = el("defs");
   svg.append(defs);
-
-  bubbles.forEach((bubble, i) => {
-    const p = GLASS_PRESETS[bubble.dataset.glass] ?? GLASS_PRESETS.lg;
-    const size = bubble.offsetWidth;
-    const id = `glass-${i}`;
-    defs.append(createGlassFilter(id, size, p));
-    bubble.style.backdropFilter = `url(#${id})`;
-    bubble.classList.add("bubble--svg-glass");
-  });
-
   document.body.append(svg);
+  return defs;
+}
+
+/** One filter per preset + pixel size, created on first use and reused by every bubble. */
+function glassFilterId(size, presetName) {
+  const key = `${presetName}:${size}`;
+  let id = filterIds.get(key);
+  if (!id) {
+    id = `glass-${presetName}-${size}`;
+    ensureDefs().append(createGlassFilter(id, size, GLASS_PRESETS[presetName] ?? GLASS_PRESETS.lg));
+    filterIds.set(key, id);
+  }
+  return id;
+}
+
+/**
+ * Applies the glass look to one bubble element.
+ * @param {HTMLElement} bubble
+ * @param {number} size  bubble diameter in px (the filter is built for exactly this size)
+ * @param {string} presetName  "lg" | "sm"
+ * @param {{svg?: boolean}} [opts]  svg=false forces the plain CSS frost fallback
+ */
+export function applyGlass(bubble, size, presetName = "lg", { svg = svgGlassSupported } = {}) {
+  const p = GLASS_PRESETS[presetName] ?? GLASS_PRESETS.lg;
+  // Light highlight is pure CSS, so it applies in every browser.
+  bubble.style.setProperty("--glass-light", p.lightIntensity);
+  // Figma -45° = light from the top-left; CSS gradient angle points to where it ends.
+  bubble.style.setProperty("--glass-light-angle", `${180 + p.lightAngle}deg`);
+
+  if (svg) {
+    bubble.style.backdropFilter = `url(#${glassFilterId(Math.round(size), presetName)})`;
+    bubble.classList.add("bubble--svg-glass");
+  } else {
+    bubble.style.backdropFilter = ""; // back to the CSS frost fallback
+    bubble.classList.remove("bubble--svg-glass");
+  }
+}
+
+/** Static bubbles (e.g. reduced motion): apply glass to the existing markup. */
+export function initGlass(bubbles) {
+  for (const bubble of bubbles) applyGlass(bubble, bubble.offsetWidth, bubble.dataset.glass);
 }

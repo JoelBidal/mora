@@ -18,7 +18,8 @@
   </head>
   <body>
     <div class="page">
-      <main class="card">
+      <main class="site">
+      <section class="card card--hero">
         <!-- Hero visual: face + gradients (Figma node "Asset", wrapped by the Dither ShaderEffect) -->
         <div class="hero-asset" id="hero-asset" aria-hidden="true">
           <div class="hero-asset__inner">
@@ -31,11 +32,11 @@
 
         <!-- Floating "bubbles" over the face -->
         <div class="bubbles" aria-hidden="true">
-          <span class="bubble bubble--glow" data-glass="lg" style="--x: 359px; --y: 156px; --s: 80px"><span class="bubble__label">++++<br />pa</span></span>
+          <span class="bubble bubble--glow" data-glass="lg" style="--x: 371px; --y: 168px; --s: 56px"><span class="bubble__label">++++<br />pa</span></span>
           <span class="bubble" data-glass="sm" style="--x: 428px; --y: 148px; --s: 30px"></span>
           <span class="bubble" data-glass="sm" style="--x: 425px; --y: 222px; --s: 15px"></span>
-          <span class="bubble bubble--glow" data-glass="lg" style="--x: 527px; --y: 306px; --s: 90px"><span class="bubble__label">01<br />base</span></span>
-          <span class="bubble bubble--glow" data-glass="lg" style="--x: 606px; --y: 291px; --s: 45px"><span class="bubble__label">50<br />spf</span></span>
+          <span class="bubble bubble--glow" data-glass="lg" style="--x: 540.5px; --y: 319.5px; --s: 63px"><span class="bubble__label">01<br />base</span></span>
+          <span class="bubble bubble--glow" data-glass="lg" style="--x: 606px; --y: 291px; --s: 45px"><span class="bubble__label">spf</span></span>
           <span class="bubble bubble--glow bubble--glow-sm" data-glass="lg" style="--x: 608px; --y: 368px; --s: 30px"></span>
           <span class="bubble bubble--glow" data-glass="lg" style="--x: 372px; --y: 430px; --s: 60px"><span class="bubble__label">uv<br />a+b</span></span>
         </div>
@@ -57,14 +58,252 @@
 
         <section class="hero">
           <div class="hero__text">
-            <h1 class="hero__title">What your face reveals<br />about your health</h1>
+            <h1 class="hero__title">What your face reveals about your health</h1>
             <p class="hero__subtitle">
               Explore the subtle signs your skin reveals and the delicate balance between health,
               nature, and modern skincare.
             </p>
           </div>
-          <a class="btn" href="#discover">Discover Mora</a>
+          <a class="btn" href="#science">Discover Mora</a>
         </section>
+      </section>
+
+      <!-- Section 2: The science of your skin (Figma node 3789:14608, nav omitted) -->
+      <section class="card card--science" id="science" aria-labelledby="science-title">
+        <img class="section-glow" src="/assets/section-glow.svg" alt="" aria-hidden="true" width="1000" height="950" />
+
+        <div class="section-inner">
+          <header class="split-header">
+            <div class="split-header__eyebrow">
+              <span class="mark" aria-hidden="true">
+                <span></span><span></span><span></span><span class="mark__pill"></span>
+              </span>
+              <p class="split-header__label">The science of<br />your skin</p>
+            </div>
+            <h2 class="split-header__title" id="science-title">The signals beneath your skin are telling a story.</h2>
+          </header>
+
+          <div class="stats">
+            <article class="stat">
+              <div class="stat__card">
+                <img class="stat__img" src="/assets/stat-understand.png" alt="" loading="lazy" decoding="async"
+                  style="--pos: 50% 50%" />
+                <span class="stat__blur" aria-hidden="true"></span>
+                <span class="tag">Understand</span>
+                <p class="stat__value">
+                  <span class="stat__number">89%</span>
+                  <span class="stat__icon" style="--gap: 4px; --top: 21px; --size: 20px" aria-hidden="true">
+                    <img src="/assets/stat-arrow-up.svg" alt="" />
+                  </span>
+                </p>
+              </div>
+              <div class="stat__body">
+                <h3 class="stat__title">Your skin is constantly changing</h3>
+                <p class="stat__text">
+                  Temperature, hydration, stress and environment continuously influence the skin's
+                  condition.
+                </p>
+              </div>
+            </article>
+
+            <article class="stat">
+              <div class="stat__card">
+                <img class="stat__img" src="/assets/bento-ecosystem.png" alt="" loading="lazy" decoding="async"
+                  style="--pos: 100% 0%" />
+                <span class="stat__blur" aria-hidden="true"></span>
+                <span class="tag">Decode</span>
+                <p class="stat__value">
+                  <span class="stat__number">1,289</span>
+                  <span class="stat__icon stat__icon--plus" style="--gap: 5px; --top: 20px; --size: 27.759px" aria-hidden="true">
+                    <span class="stat__icon-rot"><img src="/assets/stat-plus.svg" alt="" /></span>
+                  </span>
+                </p>
+              </div>
+              <div class="stat__body">
+                <h3 class="stat__title">Signals beneath the surface</h3>
+                <p class="stat__text">
+                  Modern technology helps us look beyond what we see and understand the skin as a
+                  living ecosystem.
+                </p>
+              </div>
+            </article>
+
+            <article class="stat">
+              <div class="stat__card">
+                <img class="stat__img" src="/assets/bento-botanical.png" alt="" loading="lazy" decoding="async"
+                  style="--pos: 0% 50%" />
+                <span class="stat__blur" aria-hidden="true"></span>
+                <span class="tag">Respond</span>
+                <p class="stat__value">
+                  <span class="stat__number">30%</span>
+                  <span class="stat__icon stat__icon--down" style="--gap: 3.01px; --top: 21px; --size: 20px" aria-hidden="true">
+                    <img src="/assets/stat-arrow-down.svg" alt="" />
+                  </span>
+                </p>
+              </div>
+              <div class="stat__body">
+                <h3 class="stat__title">Less guesswork, more precision</h3>
+                <p class="stat__text">
+                  Smarter formulations can turn what we learn into routines designed around what skin
+                  actually needs.
+                </p>
+              </div>
+            </article>
+          </div>
+        </div>
+      </section>
+
+      <!-- Section 3: Signals + bento (Figma node 3773:14158) -->
+      <section class="card card--signals" id="discover" aria-labelledby="signals-title">
+        <div class="signals__intro">
+          <h2 class="signals__title" id="signals-title">Small signs that say a lot about your skin</h2>
+          <div class="signals__body">
+            <p class="signals__text">
+              Dryness, redness, dullness, or uneven texture can be more than cosmetic concerns. Learn
+              what these subtle signals might be telling you.
+            </p>
+          </div>
+        </div>
+
+        <div class="bento" id="signals">
+          <a class="tile tile--col tile--a" href="#science">
+            <span class="tile__media" aria-hidden="true">
+              <img class="tile__img" src="/assets/bento-science.png" alt="" loading="lazy" decoding="async"
+                style="--pos: 50% 50%" />
+              <span class="tile__shade tile__shade--dark" style="--o: 0.2"></span>
+            </span>
+            <span class="tile__arrow" aria-hidden="true"><span class="tile__arrow-icon"><img src="/assets/arrow.svg" alt="" /></span></span>
+            <span class="tile__pill">Science meets nature</span>
+          </a>
+
+          <a class="tile tile--col tile--b" href="#botanical">
+            <span class="tile__media" aria-hidden="true">
+              <img class="tile__img" src="/assets/bento-botanical.png" alt="" loading="lazy" decoding="async"
+                style="--pos: 50% 50%" />
+              <span class="tile__shade tile__shade--fade"></span>
+            </span>
+            <span class="tile__arrow" aria-hidden="true"><span class="tile__arrow-icon"><img src="/assets/arrow.svg" alt="" /></span></span>
+            <span class="tile__text">
+              Where botanical ingredients meet biotechnology, new possibilities emerge for creating
+              skincare that is both effective and powerful.
+            </span>
+          </a>
+
+          <a class="tile tile--row tile--c" href="#designed">
+            <span class="tile__media" aria-hidden="true">
+              <img class="tile__img" src="/assets/bento-designed.png" alt="" loading="lazy" decoding="async"
+                style="--pos: 50% 35%" />
+              <span class="tile__shade tile__shade--fade"></span>
+            </span>
+            <span class="tile__pill">Designed for your skin</span>
+            <span class="tile__arrow" aria-hidden="true"><span class="tile__arrow-icon"><img src="/assets/arrow.svg" alt="" /></span></span>
+          </a>
+
+          <a class="tile tile--col tile--d" href="#microbiome">
+            <span class="tile__media" aria-hidden="true">
+              <img class="tile__img" src="/assets/bento-microbiome.png" alt="" loading="lazy" decoding="async"
+                style="--pos: 50% 29%" />
+              <span class="tile__shade tile__shade--fade"></span>
+            </span>
+            <span class="tile__arrow" aria-hidden="true"><span class="tile__arrow-icon"><img src="/assets/arrow.svg" alt="" /></span></span>
+            <span class="tile__text tile__text--narrow">
+              Millions of microorganisms, natural oils, and protective processes work together every
+              day to keep your skin balanced.
+            </span>
+          </a>
+
+          <a class="tile tile--row tile--e" href="#skin">
+            <span class="tile__media" aria-hidden="true">
+              <img class="tile__img" src="/assets/bento-skin.png" alt="" loading="lazy" decoding="async"
+                style="--pos: 50% 5%" />
+              <span class="tile__shade tile__shade--dark" style="--o: 0.4"></span>
+            </span>
+            <span class="tile__pill">Designed for your skin</span>
+            <span class="tile__arrow" aria-hidden="true"><span class="tile__arrow-icon"><img src="/assets/arrow.svg" alt="" /></span></span>
+          </a>
+
+          <a class="tile tile--row tile--f" href="#ecosystem">
+            <span class="tile__media" aria-hidden="true">
+              <img class="tile__img" src="/assets/bento-ecosystem.png" alt="" loading="lazy" decoding="async"
+                style="--pos: 50% 50%" />
+              <span class="tile__shade tile__shade--dark" style="--o: 0.4"></span>
+            </span>
+            <span class="tile__pill">The skin ecosystem</span>
+            <span class="tile__arrow" aria-hidden="true"><span class="tile__arrow-icon"><img src="/assets/arrow.svg" alt="" /></span></span>
+          </a>
+
+          <a class="tile tile--col tile--g" href="#everyone">
+            <span class="tile__media" aria-hidden="true">
+              <img class="tile__img" src="/assets/bento-everyone.png" alt="" loading="lazy" decoding="async"
+                style="--pos: 50% 74%" />
+              <span class="tile__shade tile__shade--warm" style="--o: 0.4"></span>
+            </span>
+            <span class="tile__arrow" aria-hidden="true"><span class="tile__arrow-icon"><img src="/assets/arrow.svg" alt="" /></span></span>
+            <span class="tile__pill">Built for everyone</span>
+          </a>
+        </div>
+      </section>
+
+      <!-- Section 4: The intelligence of healthy skin (Figma node 3803:234, nav omitted) -->
+      <section class="card card--approach" id="approach" aria-labelledby="approach-title">
+        <img class="section-glow" src="/assets/section-glow.svg" alt="" aria-hidden="true" width="1000" height="950" />
+
+        <div class="section-inner">
+          <header class="split-header">
+            <div class="split-header__eyebrow">
+              <span class="mark" aria-hidden="true">
+                <span class="mark__pill" style="--pill-w: 46px; --pill-bg: #fff"></span><span></span><span></span><span></span>
+              </span>
+              <p class="split-header__label">The intelligence<br />of healthy skin</p>
+            </div>
+            <h2 class="split-header__title" id="approach-title">Technology that gets closer to what your skin needs.</h2>
+          </header>
+
+          <div class="approach">
+            <!-- Left: how it works -->
+            <article class="approach__card approach__card--intro">
+              <span class="approach__orb" aria-hidden="true"><img src="/assets/approach-orb.svg" alt="" /></span>
+              <span class="tag">How it works</span>
+              <div class="approach__content">
+                <div class="approach__copy">
+                  <h3 class="approach__title">Your skin is always adapting.</h3>
+                  <p class="approach__text">
+                    From the environment around you to the products you use, countless signals
+                    influence how your skin looks, feels, and functions every day.
+                  </p>
+                </div>
+                <a class="btn" href="#approach">Explore our approach</a>
+              </div>
+            </article>
+
+            <!-- Right: dithered image + ASCII art + glass card -->
+            <article class="approach__card approach__card--visual">
+              <!-- "image 294", exported from Figma with its Dither effect baked in (no runtime shader) -->
+              <img class="approach__media" src="/assets/approach-flower.jpg" alt="" width="448" height="550"
+                loading="lazy" decoding="async" />
+              <canvas class="approach__ascii" id="approach-ascii" width="448" height="550" aria-hidden="true"></canvas>
+              <span class="approach__veil" aria-hidden="true"></span>
+
+              <div class="glass-card">
+                <div class="glass-card__copy">
+                  <h3 class="glass-card__title">Designed around your skin.</h3>
+                  <p class="glass-card__text">
+                    Technology helps us understand what your skin needs, so every formula can work
+                    with its natural rhythm instead of against it.
+                  </p>
+                </div>
+                <p class="glass-card__value">
+                  <span class="glass-card__number">92%</span>
+                  <span class="glass-card__meta">
+                    <span class="glass-card__icon" aria-hidden="true"><img src="/assets/stat-arrow-up.svg" alt="" /></span>
+                    <span class="glass-card__label">Skin response</span>
+                  </span>
+                </p>
+              </div>
+            </article>
+          </div>
+        </div>
+      </section>
       </main>
 
       <div class="noise" aria-hidden="true"></div>

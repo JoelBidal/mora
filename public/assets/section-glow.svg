@@ -1,0 +1,20 @@
+<svg preserveAspectRatio="none" overflow="visible" style="display: block;" width="1000" height="950" viewBox="0 0 1000 950" fill="none" xmlns="http://www.w3.org/2000/svg">
+<g id="Wrapper blur" clip-path="url(#clip0_0_10)">
+<g id="Vector" opacity="0.45" filter="url(#filter0_f_0_10)">
+<path d="M499.975 -156.069C571.645 -156.069 629.746 44.7801 629.746 116.451C629.746 188.121 571.645 246.222 499.975 246.222C428.304 246.222 370.204 188.121 370.204 116.451C370.204 44.7801 428.304 -156.069 499.975 -156.069Z" fill="#A3CB71"/>
+<path d="M499.975 -233.931C571.645 -233.931 629.746 -434.78 629.746 -506.451C629.746 -578.121 571.645 -636.222 499.975 -636.222C428.304 -636.222 370.204 -578.121 370.204 -506.451C370.204 -434.78 428.304 -233.931 499.975 -233.931Z" fill="#A3CB71"/>
+<path d="M461.043 -195C461.043 -266.671 260.195 -324.771 188.524 -324.771C116.853 -324.771 58.753 -266.671 58.753 -195C58.753 -123.329 116.853 -65.2289 188.524 -65.2289C260.195 -65.2289 461.043 -123.329 461.043 -195Z" fill="#A3CB71"/>
+<path d="M538.906 -195C538.906 -123.329 739.755 -65.2289 811.425 -65.2289C883.096 -65.2289 941.197 -123.329 941.197 -195C941.197 -266.671 883.096 -324.771 811.425 -324.771C739.755 -324.771 538.906 -266.671 538.906 -195Z" fill="#A3CB71"/>
+</g>
+</g>
+<defs>
+<filter id="filter0_f_0_10" x="-341.247" y="-1036.22" width="1682.44" height="1682.44" filterUnits="userSpaceOnUse" color-interpolation-filters="sRGB">
+<feFlood flood-opacity="0" result="BackgroundImageFix"/>
+<feBlend mode="normal" in="SourceGraphic" in2="BackgroundImageFix" result="shape"/>
+<feGaussianBlur stdDeviation="200" result="effect1_foregroundBlur_0_10"/>
+</filter>
+<clipPath id="clip0_0_10">
+<rect width="1000" height="950" fill="white"/>
+</clipPath>
+</defs>
+</svg>

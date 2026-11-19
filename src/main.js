@@ -1,10 +1,12 @@
 /**
  * Mora landing — entry point.
  *
- * The page is plain HTML/CSS. Two progressive enhancements are mounted here:
+ * The page is plain HTML/CSS. Progressive enhancements are mounted here:
  *  1. The hero asset (face + gradients) is wrapped in Figma's Dither ShaderEffect
  *     (`@figma/expressive-components`, a React component → mounted as a small React island).
- *  2. The bubbles get Figma's Glass effect (see ./glass.js).
+ *  2. The bubbles rise, wobble and pop in a small physics simulation (./bubbles.js), each with
+ *     Figma's Glass effect (./glass.js).
+ *  3. Section 4: the masked ASCII art (./ascii.js). Its photo is a static, pre-dithered export.
  */
 import { createElement as h } from "react";
 import { createRoot } from "react-dom/client";
@@ -15,6 +17,9 @@ import {
   manifest as ditherManifest,
 } from "./lib/custom-effects/CodeComponentId_55a4ca852373c81b69803326c5af7aa5f1af580b_412";
 import { initGlass } from "./glass.js";
+import { initBubbles } from "./bubbles.js";
+import { drawAsciiArt } from "./ascii.js";
+import { ASCII_FLOWER } from "./data/ascii-flower.js";
 
 /* ---------- 1. Dither shader on the hero asset ---------- */
 
@@ -64,6 +69,28 @@ if (heroAsset) {
   createRoot(heroAsset).render(h(HeroAsset));
 }
 
-/* ---------- 2. Glass effect on the bubbles ---------- */
+/* ---------- 2. Bubbles: physics simulation (static glass bubbles with reduced motion) ---------- */
 
-initGlass(document.querySelectorAll(".bubble[data-glass]"));
+const bubblesEl = document.querySelector(".bubbles");
+if (bubblesEl) {
+  if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) {
+    initGlass(bubblesEl.querySelectorAll(".bubble[data-glass]"));
+  } else {
+    initBubbles(bubblesEl);
+  }
+}
+
+/* ---------- 3. Section 4: ASCII art ---------- */
+// (The flower photo behind it is a static export with the dither baked in — no runtime shader.)
+
+const asciiCanvas = document.getElementById("approach-ascii");
+if (asciiCanvas) {
+  // Mask frame sits at y = -1.5 and clips to 545px; gradient rect spans y 0.5 → 550.5.
+  drawAsciiArt(asciiCanvas, ASCII_FLOWER, {
+    width: 448,
+    height: 550,
+    offsetY: -1.5,
+    clipHeight: 545,
+    gradient: { y0: 0.5, y1: 550.5, from: "rgb(40, 45, 4)", to: "rgb(151, 151, 151)" },
+  });
+}
