@@ -14,7 +14,7 @@
 
   /* Layout */
   --card-max: 1000px;
-  --page-top: clamp(16px, 5vw, 74px);
+  --page-top: clamp(16px, 4vw, 74px);
   --card-pad: clamp(16px, 5vw, 50px); /* inline padding inside the white card */
   --section-space: clamp(64px, 9vw, 112px); /* vertical rhythm between sections */
   --radius: 8px;
@@ -1014,7 +1014,7 @@ a {
 .noise {
   position: absolute;
   inset: 0;
-  background-image: url("/assets/noise.png");
+  background-image: url("/assets/noise.webp");
   background-size: 186.3px 331.2px;
   background-position: top left;
   mix-blend-mode: overlay;
