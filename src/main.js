@@ -2,21 +2,14 @@
  * Mora landing — entry point.
  *
  * The page is plain HTML/CSS. Progressive enhancements are mounted here:
- *  1. The hero asset (face + gradients) is wrapped in Figma's Dither ShaderEffect
- *     (`@figma/expressive-components`, a React component → mounted as a small React island).
- *     A cursor-driven "dither stir" exists in ./dither-stir.js but is not enabled yet.
+ *  1. The hero artwork gets Figma's Dither shader via WebGPU, without the experimental
+ *     HTML-in-Canvas API (./hero-dither.js). A cursor-driven "dither stir" exists in
+ *     ./dither-stir.js but is not enabled yet.
  *  2. The bubbles rise, wobble and pop in a small physics simulation (./bubbles.js), each with
  *     Figma's Glass effect (./glass.js).
  *  3. Section 4: the masked ASCII art, animated (./ascii.js). Its photo is a static, pre-dithered export.
  */
-import { createElement as h } from "react";
-import { createRoot } from "react-dom/client";
-import { ShaderEffect } from "@figma/expressive-components";
-import {
-  setup as setupDither,
-  render as renderDither,
-  manifest as ditherManifest,
-} from "./lib/custom-effects/CodeComponentId_55a4ca852373c81b69803326c5af7aa5f1af580b_412";
+import { mountHeroDither } from "./hero-dither.js";
 import { initGlass } from "./glass.js";
 import { initBubbles } from "./bubbles.js";
 import { createAsciiArt } from "./ascii.js";
@@ -36,40 +29,15 @@ const DITHER_PARAMS = {
   pixelSize: 2,
 };
 
-// Module-scope → stable reference.
 // Work in progress, not enabled: ./dither-stir.js (cursor reshuffles the dither dots without
-// moving the image). To try it: import createDitherStirShader/initDitherStir, put
-// `createDitherStirShader(DITHER_PARAMS).shader` first in this array and call initDitherStir().
-const DITHER_SHADERS = [
-  { setup: setupDither, render: renderDither, params: DITHER_PARAMS, manifest: ditherManifest },
-];
+// moving the image). It would go between the image source and the dither in hero-dither.js;
+// note it repaints via canvas.requestPaint(), which a child-less ShaderEffect doesn't have.
 
-function HeroAsset() {
-  return h(
-    ShaderEffect,
-    { shaders: DITHER_SHADERS, width: 1000, height: 950, className: "hero-asset__canvas" },
-    h(
-      "div",
-      { className: "hero-asset__inner" },
-      h("div", { className: "grad grad--bottom" }),
-      h("img", {
-        className: "hero-asset__face",
-        src: "/assets/face.webp",
-        alt: "",
-        width: 482,
-        height: 647,
-      }),
-      h("div", { className: "grad grad--top" }),
-      h("div", { className: "grad grad--radial" }),
-    ),
-  );
-}
-
-const heroAsset = document.getElementById("hero-asset");
-if (heroAsset) {
-  // Replaces the static fallback markup. If WebGPU / HTML-in-Canvas are unavailable,
-  // ShaderEffect renders its children as ordinary DOM, so the page looks the same minus the dither.
-  createRoot(heroAsset).render(h(HeroAsset));
+const heroDither = document.getElementById("hero-dither");
+const heroArt = document.querySelector(".hero-asset__inner");
+if (heroDither && heroArt) {
+  // WebGPU only (no HTML-in-Canvas). Without it, the static artwork underneath stays visible.
+  mountHeroDither(heroDither, heroArt, DITHER_PARAMS);
 }
 
 /* ---------- 2. Bubbles: physics simulation (static glass bubbles with reduced motion) ---------- */

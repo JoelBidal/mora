@@ -20,7 +20,8 @@
     <div class="page">
       <main class="site">
       <section class="card card--hero">
-        <!-- Hero visual: face + gradients (Figma node "Asset", wrapped by the Dither ShaderEffect) -->
+        <!-- Hero visual: face + gradients (Figma node "Asset"). The static artwork is the
+             fallback; src/hero-dither.js composes it and renders the dithered canvas on top. -->
         <div class="hero-asset" id="hero-asset" aria-hidden="true">
           <div class="hero-asset__inner">
             <div class="grad grad--bottom"></div>
@@ -28,6 +29,7 @@
             <div class="grad grad--top"></div>
             <div class="grad grad--radial"></div>
           </div>
+          <div class="hero-asset__dither" id="hero-dither"></div>
         </div>
 
         <!-- Floating "bubbles" over the face -->

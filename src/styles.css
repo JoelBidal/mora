@@ -93,6 +93,14 @@ a {
   pointer-events: none;
 }
 
+/* Dithered canvas (src/hero-dither.js) covers the static artwork when WebGPU is available */
+.hero-asset__dither {
+  position: absolute;
+  inset: 0;
+  overflow: clip;
+  border-radius: 16px 16px 0 0;
+}
+
 .hero-asset__canvas {
   display: block;
 }
